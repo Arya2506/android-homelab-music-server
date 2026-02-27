@@ -1,0 +1,89 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 720" width="900" height="720" font-family="'Segoe UI', Arial, sans-serif">
+
+  <!-- Background -->
+  <rect width="900" height="720" fill="#0f1117"/>
+
+  <!-- Title -->
+  <text x="450" y="42" text-anchor="middle" fill="#ffffff" font-size="18" font-weight="700" letter-spacing="1">Android Homelab Music Server — Architecture</text>
+
+  <!-- ── ZONE: PUBLIC INTERNET ── -->
+  <rect x="30" y="65" width="840" height="130" rx="10" fill="none" stroke="#2a2d3e" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="50" y="85" fill="#555a7a" font-size="11" font-weight="600" letter-spacing="2">PUBLIC INTERNET</text>
+
+  <!-- Client box -->
+  <rect x="340" y="95" width="220" height="82" rx="8" fill="#1a1d2e" stroke="#3b4fd8" stroke-width="1.5"/>
+  <text x="450" y="122" text-anchor="middle" fill="#7b8fff" font-size="12" font-weight="700">CLIENT</text>
+  <text x="450" y="142" text-anchor="middle" fill="#9096b8" font-size="11">Browser / Music App</text>
+  <text x="450" y="160" text-anchor="middle" fill="#9096b8" font-size="11">Any device, anywhere</text>
+
+  <!-- Arrow 1: Client → Zero Trust -->
+  <line x1="450" y1="200" x2="450" y2="232" stroke="#3b4fd8" stroke-width="2"/>
+  <polygon points="450,238 444,224 456,224" fill="#3b4fd8"/>
+  <text x="460" y="220" fill="#555a7a" font-size="10">HTTPS request</text>
+
+  <!-- ── ZONE: CLOUDFLARE EDGE ── -->
+  <rect x="30" y="245" width="840" height="195" rx="10" fill="none" stroke="#2a3530" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="50" y="265" fill="#3a6655" font-size="11" font-weight="600" letter-spacing="2">CLOUDFLARE EDGE</text>
+
+  <!-- Zero Trust box -->
+  <rect x="260" y="278" width="380" height="72" rx="8" fill="#1a2420" stroke="#2ecc71" stroke-width="1.5"/>
+  <text x="450" y="302" text-anchor="middle" fill="#2ecc71" font-size="12" font-weight="700">CLOUDFLARE ZERO TRUST</text>
+  <text x="450" y="322" text-anchor="middle" fill="#7abf9a" font-size="11">Email allowlist — only known addresses pass</text>
+  <text x="450" y="338" text-anchor="middle" fill="#7abf9a" font-size="11">OTP verification — no password to steal</text>
+
+  <!-- Arrow 2: Zero Trust → Tunnel -->
+  <line x1="450" y1="352" x2="450" y2="382" stroke="#2ecc71" stroke-width="2"/>
+  <polygon points="450,388 444,374 456,374" fill="#2ecc71"/>
+  <text x="460" y="370" fill="#555a7a" font-size="10">authenticated request</text>
+
+  <!-- Tunnel box -->
+  <rect x="260" y="392" width="380" height="72" rx="8" fill="#1a2024" stroke="#f39c12" stroke-width="1.5"/>
+  <text x="450" y="416" text-anchor="middle" fill="#f39c12" font-size="12" font-weight="700">CLOUDFLARE TUNNEL</text>
+  <text x="450" y="436" text-anchor="middle" fill="#c9935a" font-size="11">Outbound-only encrypted connection</text>
+  <text x="450" y="452" text-anchor="middle" fill="#c9935a" font-size="11">No open ports — home IP never exposed</text>
+
+  <!-- Arrow 3: Tunnel → Phone -->
+  <line x1="450" y1="464" x2="450" y2="494" stroke="#f39c12" stroke-width="2"/>
+  <polygon points="450,500 444,486 456,486" fill="#f39c12"/>
+  <text x="460" y="484" fill="#555a7a" font-size="10">tunnelled traffic</text>
+
+  <!-- ── ZONE: HOME NETWORK ── -->
+  <rect x="30" y="507" width="840" height="185" rx="10" fill="none" stroke="#2e2a3a" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="50" y="527" fill="#5a5070" font-size="11" font-weight="600" letter-spacing="2">HOME NETWORK  —  Static LAN IP</text>
+
+  <!-- Phone outer box -->
+  <rect x="180" y="538" width="540" height="135" rx="10" fill="#1a1624" stroke="#9b59b6" stroke-width="1.5"/>
+  <text x="450" y="560" text-anchor="middle" fill="#9b59b6" font-size="12" font-weight="700">XIAOMI PHONE  ·  LineageOS (Android 16)</text>
+
+  <!-- Termux box -->
+  <rect x="205" y="570" width="490" height="88" rx="8" fill="#16121f" stroke="#6c3483" stroke-width="1"/>
+  <text x="450" y="590" text-anchor="middle" fill="#c39bd3" font-size="11" font-weight="600">Termux</text>
+
+  <!-- cloudflared pill -->
+  <rect x="220" y="600" width="190" height="44" rx="6" fill="#1e1530" stroke="#8e44ad" stroke-width="1"/>
+  <text x="315" y="619" text-anchor="middle" fill="#a569bd" font-size="11" font-weight="600">cloudflared</text>
+  <text x="315" y="636" text-anchor="middle" fill="#7d6d8a" font-size="10">receives tunnel traffic</text>
+
+  <!-- Arrow: cloudflared → Navidrome -->
+  <line x1="412" y1="622" x2="448" y2="622" stroke="#8e44ad" stroke-width="1.5"/>
+  <polygon points="450,622 441,617 441,627" fill="#8e44ad"/>
+
+  <!-- Navidrome pill -->
+  <rect x="450" y="600" width="230" height="44" rx="6" fill="#1e1530" stroke="#8e44ad" stroke-width="1"/>
+  <text x="565" y="619" text-anchor="middle" fill="#a569bd" font-size="11" font-weight="600">Navidrome  :4533</text>
+  <text x="565" y="636" text-anchor="middle" fill="#7d6d8a" font-size="10">/sdcard/Music</text>
+
+  <!-- ── LEGEND ── -->
+  <rect x="30" y="700" width="840" height="1" fill="#2a2d3e"/>
+  <text x="45" y="715" fill="#3b4fd8" font-size="10" font-weight="600">■</text>
+  <text x="58" y="715" fill="#555a7a" font-size="10">Client</text>
+  <text x="115" y="715" fill="#2ecc71" font-size="10" font-weight="600">■</text>
+  <text x="128" y="715" fill="#555a7a" font-size="10">Zero Trust Auth</text>
+  <text x="235" y="715" fill="#f39c12" font-size="10" font-weight="600">■</text>
+  <text x="248" y="715" fill="#555a7a" font-size="10">Encrypted Tunnel</text>
+  <text x="365" y="715" fill="#9b59b6" font-size="10" font-weight="600">■</text>
+  <text x="378" y="715" fill="#555a7a" font-size="10">Phone / LineageOS</text>
+  <text x="490" y="715" fill="#8e44ad" font-size="10" font-weight="600">■</text>
+  <text x="503" y="715" fill="#555a7a" font-size="10">Termux Runtime</text>
+
+</svg>
