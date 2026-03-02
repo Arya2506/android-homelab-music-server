@@ -8,20 +8,26 @@ This isn't a "buy a Raspberry Pi and follow a guide" project. The hardware was a
 
 ## How It Looks
 
+**Navidrome setup in Termux**
+![Navidrome setup/folder in Termux](./assets/server_log1.png)
+
 **Navidrome running in Termux**
-![Navidrome running in Termux](./assets/navidrome-running.png)
+![Navidrome running in Termux](./assets/server_log2.png)
+
+**Navidrome running logs in Termux**
+![Navidrome running logs in Termux](./assets/server_log3.png)
 
 **Cloudflare tunnel — healthy status**
-![Cloudflare tunnel healthy](./assets/cloudflare-tunnel-healthy.png)
-
-**Zero Trust access policy**
-![Cloudflare Zero Trust policy](./assets/cloudflare-zt-policy.png)
+![Cloudflare tunnel healthy](./assets/cloudflare_tunnel_healthy.png)
 
 **OTP login wall**
 ![OTP login screen](./assets/otp-login-screen.png)
 
+**user login wall of navidrome**
+![user login screen/no new user creation](./assets/no_user_creation.png)
+
 **Navidrome music library**
-![Navidrome UI](./assets/navidrome-ui.png)
+![Navidrome UI](./assets/navidrome_ui.png)
 
 ---
 
